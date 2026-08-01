@@ -34,6 +34,7 @@
         left: 0;
         width: 100vw !important;
         height: 100vh !important;
+        cursor: pointer;
     }
     
     .overlay{
@@ -87,7 +88,7 @@
     .continue-button{
         color: white;
         position: absolute;
-        top: 90%;
+        top: 85%;
         left: 50%;
         transform: translateX(-50%);
         background: none;
@@ -114,8 +115,36 @@
         transform: translateY(-50%);
 
     }
-    
+    /*
     @media(max-width: 768px){
+        .exhibit{
+            top: -15%;
+        }
+        .car-stat{
+            margin: 10px;
+        }
+        .continue-button{
+            margin-bottom: 15em;
+            margin: 0;
+        }
+        .car-stats-container{
+            top: 45%;
+            left: 50%;
+            transform: translateX(-50%) !important;
+            margin:0;
+        }
+        .car-name-info{
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0 !important;
+        }
+        .drivers-info{
+            width: 300px;
+        }
+    }
+        */
+    @media(max-aspect-ratio: 9/10){
         .exhibit{
             top: -15%;
         }
