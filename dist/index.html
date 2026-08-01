@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/icon.png">
+    <title>Mako Landing Page</title>
+  <script type="module" crossorigin src="/assets/index-TGD3Vywm.js"></script>
+</head>
+<style>
+    @font-face{
+        font-family: racing;
+        src: url("/a4-speed.ttf");
+    }
+    @font-face{
+        font-family: aileron;
+        src: url("/Aileron-Regular.otf");
+    }
+    html{
+        overscroll-behavior: none;
+        overflow: hidden;
+    }
+    body{
+        margin: 0;
+        background-image: url("/milky-way.jpg");
+        background-size: cover;
+        background-position: center center;
+        color: white;
+        position: relative;
+    }
+    .exhibit{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw !important;
+        height: 100vh !important;
+    }
+    
+    .overlay{
+        position: relative;
+        grid-template-rows: 1fr 4fr 1fr;
+        place-items: center;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+    }
+    .overlay-logo{
+        width: clamp(150px,20vw,450px) !important;
+        position: absolute;
+        top: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .car-stats-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1em;
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .car-stat{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0.5em;
+    }
+    .car-stat h2{
+        margin: 2px;
+        font-size: clamp(15px,1.75vw,50px);
+        font-family: racing, sans-serif;
+        text-align: center;
+        letter-spacing: 0.5px;
+    }
+    .car-stat p{
+        margin: 2px;
+        font-size: clamp(10px,1vw,30px);
+        font-family: aileron, sans-serif;
+        text-align: center;
+    }
+    .continue-button{
+        color: white;
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: none;
+        border: 2px solid white;
+        border-radius: 0.5em;
+        font-size: clamp(15px,1.5vw,30px);
+        cursor: pointer;
+        padding: 0.5em;
+        font-family: sans-serif;
+        font-weight: 200;
+        align-self: center;
+        animation: popUp 1.5s ease;
+        transition: background-color 0.25s ease;
+    }
+    .continue-button:hover{
+        background-color: white;
+        color: #222d56;
+        transition: background-color 0.25s ease;
+    }
+    .car-name-info{
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        transform: translateY(-50%);
+
+    }
+    
+    @media(max-width: 768px){
+        .exhibit{
+            top: -15%;
+        }
+        .car-stat{
+            margin: 10px;
+        }
+        .continue-button{
+            margin-bottom: 15em;
+            margin: 0;
+        }
+        .car-stats-container{
+            top: 45%;
+            left: 50%;
+            transform: translateX(-50%) !important;
+            margin:0;
+        }
+        .car-name-info{
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0 !important;
+        }
+        .drivers-info{
+            width: 300px;
+        }
+    }
+</style>
+<body>
+     <canvas id = "exhibit" class = "exhibit"></canvas>
+    <div class = "overlay" id = "overlay">
+        <img class = "overlay-logo" src = "/team-logo.png">
+        <div class = "car-stat car-name-info">
+            <p>2026 Solar Car</p>
+            <h2>MAKO</h2>
+        </div>
+        <div class = "car-stats-container">
+            <div class = "car-stat division-info">
+                <p>Division</p>
+                <h2>ADVANCED</h2>
+            </div>
+            <div class = "car-stat distance-info">
+                <p>Final Distance Driven</p>
+                <h2 id = "distance-traveled-counter">-- KM</h2>
+            </div>
+            <div class = "car-stat drivers-info">
+                <p>Drivers</p>
+                <h2>RYAN LIU<br>LIAM ABELSON<br>YURIY KORNIYCHUK<br>LEZHI ZENG</h2>
+            </div>
+        </div>
+    </div>
+     <button class = "continue-button" onclick = "location.assign('https://garage803racing.org/home')">Continue →</button>
+</body>
+    <script>
+        const distanceTraveled = document.getElementById("distance-traveled-counter");
+
+        function countUp(element, start, end, duration) {
+        const startTime = performance.now();
+
+        function animate(time) {
+            const progress = Math.min((time - startTime) / duration, 1);
+
+            const value = start + (end - start) * progress;
+
+            element.textContent = value.toFixed(1) + " KM";
+
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            }
+        }
+
+        requestAnimationFrame(animate);
+        }   
+        countUp(distanceTraveled, 0, 114.3, 1500);
+    </script>
+</html>
